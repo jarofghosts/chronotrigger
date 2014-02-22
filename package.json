@@ -1,0 +1,29 @@
+{
+  "name": "chronotrigger",
+  "version": "0.0.0",
+  "description": "turn events into time",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/test.js && node test/test-timeout.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jarofghosts/chronotrigger.git"
+  },
+  "keywords": [
+    "event",
+    "time"
+  ],
+  "author": "jesse keane",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jarofghosts/chronotrigger/issues"
+  },
+  "homepage": "https://github.com/jarofghosts/chronotrigger",
+  "dependencies": {
+    "through": "~2.3.4"
+  }
+}
