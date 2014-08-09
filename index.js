@@ -3,49 +3,49 @@ var through = require('through')
 module.exports = chronotrigger
 
 function chronotrigger(ee, start, end, _timeout, _now, _settimeout) {
-  var now = _now || date_now,
-      settimeout = _settimeout || do_settimeout
+  var settimeout = _settimeout || doSettimeout
+    , now = _now || dateNow
 
-  var timeout = _timeout || 5000,
-      stream = through(),
-      timer = null,
-      end_time = 0,
-      start_time
+  var timeout = _timeout || 5000
+    , stream = through()
+    , timer = null
+    , endTime = 0
+    , startTime
 
-  ee.on(start, log_start)
-  ee.on(end, log_end)
+  ee.on(start, logStart)
+  ee.on(end, logEnd)
 
   return stream
 
-  function log_start() {
-    var right_now = now(),
-        timings
+  function logStart() {
+    var rightNow = now()
+      , timings
 
-    if (timer) clearTimeout(timer)
-    if (end_time) {
-      timings = [end_time - start_time, right_now - end_time]
+    if(timer) clearTimeout(timer)
+    if(endTime) {
+      timings = [endTime - startTime, rightNow - endTime]
 
       stream.queue(timings)
     }
 
-    start_time = right_now
+    startTime = rightNow
   }
 
-  function log_end() {
-    end_time = now()
-    if (timeout) timer = settimeout(flush, timeout)
+  function logEnd() {
+    endTime = now()
+    if(timeout) timer = settimeout(flush, timeout)
   }
 
   function flush() {
-    stream.queue([end_time - start_time, timeout])
-    end_time = 0
+    stream.queue([endTime - startTime, timeout])
+    endTime = 0
   }
 }
 
-function date_now() {
+function dateNow() {
   return Date.now()
 }
 
-function do_settimeout() {
+function doSettimeout() {
   return setTimeout.apply(null, arguments)
 }

@@ -1,5 +1,8 @@
 chronotrigger
-====
+=============
+
+[![Build Status](http://img.shields.io/travis/jarofghosts/chronotrigger.svg?style=flat)](https://travis-ci.org/jarofghosts/chronotrigger)
+[![npm install](http://img.shields.io/npm/dm/chronotrigger.svg?style=flat)](https://www.npmjs.org/package/chronotrigger)
 
 turn events into timing information
 
